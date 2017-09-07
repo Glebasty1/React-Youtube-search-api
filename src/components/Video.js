@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
@@ -17,4 +18,10 @@ const Video = (props) => {
     </div>
   );
 };
+
+
+Video.propTypes ={
+  video: PropTypes.object,
+};
+
 export default Video;

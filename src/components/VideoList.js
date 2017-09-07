@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Video from './Video';
 
@@ -15,6 +16,10 @@ const VideoList = (props) => {
       </div>
     </div>
   );
+};
+
+VideoList.propTypes ={
+  videos: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default VideoList;
