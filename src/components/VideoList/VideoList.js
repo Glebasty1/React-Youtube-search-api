@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Video from './Video';
+import Video from '../Video/Video';
 
 const VideoList = (props) => {
   return (
@@ -9,9 +9,9 @@ const VideoList = (props) => {
       <hr/>
       <h1 className="text-center">{props.title}</h1>
       <div className="row">
-        {props.videos.map((video) => {
+        {props.videos ? props.videos.map((video) => {
             return <Video video={video} key={video.id.videoId} />;
-        })
+          }) : null
         }
       </div>
     </div>

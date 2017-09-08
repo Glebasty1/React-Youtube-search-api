@@ -1,8 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 
-import SearchBar from './../components/SearchBar';
-import VideoList from './../components/VideoList';
+import SearchBar from '../SearchBar/SearchBar';
+import VideoList from '../VideoList/VideoList';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,18 +23,11 @@ class App extends React.Component {
       return 0;
     }
     e.preventDefault();
-    // Make a API request for videos
-    axios.get(`https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_API_KEY}&part=snippet,id&order=date&maxResults=10&q=${this.state.searchBar}`)
-      .then((res) => {
-        this.setState({
-          videoList: res.data.items,
-          searchBar: '',
-        });
-        console.log(this.state.videoList);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    const searchBar = this.state.searchBar;
+
+    this.props.getVideoList(searchBar);
+
   };
 
   render() {
@@ -49,7 +41,7 @@ class App extends React.Component {
             changeSearch={this.changeSearch}
             getVideoList={this.getVideoList}
           />
-          <VideoList videos={this.state.videoList} />
+          <VideoList videos={this.props.videoList} />
         </div>
       </div>
     );
